@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateMovieRequest } from './dto/movie.dto';
-import { Movie } from '@prisma/client';
 import { UpdateMovieDto } from './dto/update-movie.dto';
+import { Movie } from '../../prisma/generated/prisma/client';
 
 @Injectable()
 export class MovieService {
