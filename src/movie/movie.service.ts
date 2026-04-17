@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateMovieDto } from './dto/create-movie.dto';
+import { CreateMovieRequest } from './dto/movie.dto';
 import { Movie } from '@prisma/client';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 
@@ -8,7 +8,7 @@ import { UpdateMovieDto } from './dto/update-movie.dto';
 export class MovieService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async create(createMovieDto: CreateMovieDto): Promise<Movie> {
+  async create(createMovieDto: CreateMovieRequest): Promise<Movie> {
     const { title, releaseYear, actorIds, imageUrl } = createMovieDto;
 
     const actors = await this.prismaService.actor.findMany({
